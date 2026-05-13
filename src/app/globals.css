@@ -2,11 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #FBF1DC;
+  color: #1A1410;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #E89B2C;
+  color: #1A1410;
+}
+
+.bg-paper {
+  background-color: #FBF1DC;
+  background-image:
+    radial-gradient(rgba(26, 20, 16, 0.07) 1px, transparent 1px),
+    radial-gradient(rgba(26, 20, 16, 0.04) 1px, transparent 1px);
+  background-size: 18px 18px, 7px 7px;
+  background-position: 0 0, 9px 9px;
+}
+
+.bg-paper-dark {
+  background-color: #1A1410;
+  background-image: radial-gradient(rgba(248, 227, 176, 0.06) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.underline-wave {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'><path d='M2 5 Q 15 1, 30 5 T 60 5 T 90 5 T 118 5' stroke='%23D24B2A' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 100% 0.4em;
+  padding-bottom: 0.35em;
+}
+
+.sticker {
+  box-shadow:
+    0 1px 0 rgba(26, 20, 16, 0.15),
+    0 8px 24px -8px rgba(26, 20, 16, 0.25);
+}
+
+.tape {
+  position: absolute;
+  width: 90px;
+  height: 22px;
+  background: rgba(232, 155, 44, 0.55);
+  transform: rotate(-4deg);
+  top: -10px;
+  left: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: #D24B2A;
+  color: #FBF1DC;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn-primary:hover {
+  background: #A8341C;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border: 2px solid #1A1410;
+  color: #1A1410;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn-ghost:hover {
+  background: #1A1410;
+  color: #FBF1DC;
 }
