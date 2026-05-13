@@ -1,5 +1,5 @@
+import Image from "next/image"
 import Link from "next/link"
-import Plate from "@/lib/components/plate"
 import { business } from "@/lib/data/business"
 
 export const metadata = {
@@ -18,10 +18,10 @@ const eventTypes = [
 ]
 
 const cateringFavorites = [
-  { title: "Half-pan Famous Mac", note: "Crowd favorite", plate: "mac" as const },
-  { title: "Salmon w/ Garlic Butter", note: "Plated to order", plate: "salmon" as const },
-  { title: "Collards w/ Smoked Turkey", note: "Slow-cooked", plate: "greens" as const },
-  { title: "Sweet Potato Cornbread", note: "Signature side", plate: "cornbread" as const },
+  { title: "Half-pan Famous Mac", note: "Crowd favorite", image: "/photos/soultye_famous_mac.jpg" },
+  { title: "Lemon Pepper Wings", note: "Hand-seasoned", image: "/photos/soultye_lemon_pepper_wings.png" },
+  { title: "Whiting & Cheese Grits", note: "Soul food, straight up", image: "/photos/soultye_whiting_cheese_grits.jpg" },
+  { title: "Turkey Wings, Coconut Rice", note: "Plated for a crowd", image: "/photos/soultye_turkeywings_coconut_rice_beans.png" },
 ]
 
 const process = [
@@ -95,8 +95,16 @@ export default function CateringPage() {
                 <div className="grid grid-cols-2 gap-3">
                   {cateringFavorites.map((f) => (
                     <div key={f.title} className="text-center">
-                      <Plate variant={f.plate} className="w-full" />
-                      <div className="font-display font-bold text-ink text-sm mt-1">
+                      <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-ink">
+                        <Image
+                          src={f.image}
+                          alt={f.title}
+                          fill
+                          sizes="(min-width: 768px) 200px, 40vw"
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="font-display font-bold text-ink text-sm mt-2">
                         {f.title}
                       </div>
                       <div className="text-[10px] uppercase tracking-wider text-tomato">

@@ -1,16 +1,23 @@
+import Image from "next/image"
 import Link from "next/link"
-import Plate from "@/lib/components/plate"
 import OpenBadge from "@/lib/components/open-badge"
 import { business } from "@/lib/data/business"
 import { signatureDishes, menu } from "@/lib/data/menu"
 import { testimonials } from "@/lib/data/testimonials"
 
-const accentMap: Record<string, { bg: string; text: string; plate: any }> = {
-  tomato: { bg: "bg-tomato", text: "text-cream", plate: "lamb" },
-  marigold: { bg: "bg-marigold", text: "text-ink", plate: "mac" },
-  forest: { bg: "bg-forest", text: "text-cream", plate: "salmon" },
-  brick: { bg: "bg-brick", text: "text-cream", plate: "cornbread" },
+const accentMap: Record<string, { bg: string; text: string }> = {
+  tomato: { bg: "bg-tomato", text: "text-cream" },
+  marigold: { bg: "bg-marigold", text: "text-ink" },
+  forest: { bg: "bg-forest", text: "text-cream" },
+  brick: { bg: "bg-brick", text: "text-cream" },
 }
+
+const heroPlates = [
+  { src: "/photos/soultye_lemon_pepper_wings.png", alt: "Lemon pepper wings" },
+  { src: "/photos/soultye_famous_mac.jpg", alt: "Famous mac" },
+  { src: "/photos/soultye_whiting_cheese_grits.jpg", alt: "Whiting & cheese grits" },
+  { src: "/photos/soultye_turkeywings_coconut_rice_beans.png", alt: "Turkey wings with coconut rice and beans" },
+] as const
 
 export default function HomePage() {
   return (
@@ -74,16 +81,23 @@ function Hero() {
           <div className="relative aspect-square max-w-md mx-auto">
             <div className="absolute inset-0 rounded-full bg-marigold/40 blur-2xl scale-90" />
             <div className="relative grid grid-cols-2 gap-4 p-4">
-              {(["wings", "mac", "salmon", "greens"] as const).map((v, i) => (
+              {heroPlates.map((p, i) => (
                 <div
-                  key={v}
-                  className={`relative bg-cream rounded-3xl p-3 sticker ${
+                  key={p.src}
+                  className={`relative bg-cream rounded-3xl overflow-hidden border-2 border-ink sticker aspect-square ${
                     i % 2 === 0 ? "rotate-[-3deg]" : "rotate-[3deg]"
                   } ${i === 1 ? "translate-y-6" : ""} ${
                     i === 2 ? "-translate-y-4" : ""
                   }`}
                 >
-                  <Plate variant={v} className="w-full h-full" />
+                  <Image
+                    src={p.src}
+                    alt={p.alt}
+                    fill
+                    sizes="(min-width: 1024px) 220px, 45vw"
+                    className="object-cover"
+                    priority={i < 2}
+                  />
                 </div>
               ))}
             </div>
@@ -171,8 +185,14 @@ function Signatures() {
                 className={`relative ${a.bg} ${a.text} rounded-3xl p-6 overflow-hidden border-2 border-ink animate-fade-up`}
                 style={{ animationDelay: `${i * 80}ms` }}
               >
-                <div className="aspect-square mb-4 -mx-2">
-                  <Plate variant={a.plate} className="w-full h-full" />
+                <div className="relative aspect-square mb-4 rounded-2xl overflow-hidden border-2 border-ink/20">
+                  <Image
+                    src={dish.image}
+                    alt={dish.title}
+                    fill
+                    sizes="(min-width: 1024px) 280px, (min-width: 768px) 45vw, 90vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="font-display text-2xl font-black leading-tight">
                   {dish.title}

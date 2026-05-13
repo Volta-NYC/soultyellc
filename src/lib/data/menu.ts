@@ -94,11 +94,12 @@ export const menuNote =
 
 export const signatureDishes = [
   {
-    title: "Lamb Chops",
-    subtitle: "Garlic butter, made to order",
+    title: "Lemon Pepper Wings",
+    subtitle: "Six wings, hand-seasoned",
     description:
-      "The plate customers travel for. Two thick chops, basted in garlic butter, served over yellow rice with green beans.",
+      "Crispy wings tossed in bright lemon pepper — the kind that has folks licking their fingers before they reach the napkins.",
     accent: "tomato",
+    image: "/photos/soultye_lemon_pepper_wings.png",
   },
   {
     title: "Famous Mac",
@@ -106,6 +107,7 @@ export const signatureDishes = [
     description:
       "Three-cheese, baked golden, with that crispy edge piece everybody fights for. Yes, it's named famous for a reason.",
     accent: "marigold",
+    image: "/photos/soultye_famous_mac.jpg",
   },
   {
     title: "Whiting & Cheese Grits",
@@ -113,12 +115,14 @@ export const signatureDishes = [
     description:
       "Crispy seasoned whiting fillets over creamy yellow cheese grits, finished with fresh parsley.",
     accent: "forest",
+    image: "/photos/soultye_whiting_cheese_grits.jpg",
   },
   {
-    title: "Sweet Potato Cornbread",
-    subtitle: "The tasting that converts skeptics",
+    title: "Turkey Wings, Coconut Rice & Beans",
+    subtitle: "A plate built like a dinner",
     description:
-      "The bite that hooked a 20-person tour group walking off the Brooklyn Bridge. Golden, buttery, just sweet enough.",
+      "Fall-off-the-bone smoked turkey wings over coconut rice and beans — comfort food plated for a crowd.",
     accent: "brick",
+    image: "/photos/soultye_turkeywings_coconut_rice_beans.png",
   },
 ] as const
