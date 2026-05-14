@@ -2,6 +2,7 @@ import "./globals.css"
 import { Fraunces, Caveat, Inter } from "next/font/google"
 import Navbar from "@/lib/components/navbar"
 import Footer from "@/lib/components/footer"
+import ScrollReveal from "@/lib/components/scroll-reveal"
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ScrollReveal />
       </body>
     </html>
   )

@@ -105,11 +105,13 @@ body {
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translate3d(0, 14px, 0) scale(0.985);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
   }
 }
 
@@ -117,16 +119,42 @@ body {
   section,
   article,
   .reveal {
-    animation: fade-in-up linear both;
+    animation: fade-in-up cubic-bezier(0.22, 0.61, 0.36, 1) both;
     animation-timeline: view();
-    animation-range: entry 0% entry 60%;
+    animation-range: entry 0% cover 28%;
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .reveal-pending {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.985);
+    filter: blur(6px);
+  }
+  .reveal-pending,
+  .is-visible {
+    transition:
+      opacity 900ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      filter 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform, filter;
+  }
+  .is-visible {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   section,
   article,
-  .reveal {
+  .reveal,
+  .reveal-pending {
     animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
   }
 }
