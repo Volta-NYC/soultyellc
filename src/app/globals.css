@@ -116,8 +116,8 @@ body {
 }
 
 @supports (animation-timeline: view()) {
-  section,
-  article,
+  section:not(.no-blur-reveal),
+  article:not(.no-blur-reveal),
   .reveal {
     animation: fade-in-up cubic-bezier(0.22, 0.61, 0.36, 1) both;
     animation-timeline: view();

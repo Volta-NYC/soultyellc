@@ -11,7 +11,7 @@ export const metadata = {
 export default function MenuPage() {
   return (
     <>
-      <section className="bg-paper border-b-2 border-ink">
+      <section className="bg-paper border-b-2 border-ink no-blur-reveal">
         <div className="mx-auto max-w-7xl px-6 py-20 grid gap-10 md:grid-cols-12 items-end">
           <div className="md:col-span-8">
             <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-3">
@@ -44,13 +44,13 @@ export default function MenuPage() {
         </div>
       </section>
 
-      <section className="bg-marigold/90 text-ink border-b-2 border-ink py-4">
+      <section className="bg-marigold/90 text-ink border-b-2 border-ink py-4 no-blur-reveal">
         <div className="mx-auto max-w-7xl px-6 text-sm md:text-base font-medium">
           <span className="italic">{menuNote}</span>
         </div>
       </section>
 
-      <section className="bg-paper py-20">
+      <section className="bg-paper py-20 no-blur-reveal">
         <div className="mx-auto max-w-7xl px-6 space-y-20">
           {menu.map((cat, idx) => (
             <div key={cat.id} className="grid gap-10 md:grid-cols-12">
@@ -106,7 +106,7 @@ export default function MenuPage() {
         </div>
       </section>
 
-      <section className="bg-ink text-cream py-20">
+      <section className="bg-ink text-cream py-20 no-blur-reveal">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <div className="text-xs uppercase tracking-[0.22em] text-marigold font-semibold mb-4">
             Don't see your favorite?

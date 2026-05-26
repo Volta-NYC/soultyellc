@@ -8,7 +8,7 @@ export default function ScrollReveal() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     if (CSS.supports?.("animation-timeline: view()")) return
 
-    const selector = "section, article, .reveal"
+    const selector = "section:not(.no-blur-reveal), article:not(.no-blur-reveal), .reveal"
     const viewportH = window.innerHeight
 
     const all = Array.from(document.querySelectorAll<HTMLElement>(selector))

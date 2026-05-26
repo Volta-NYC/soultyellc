@@ -9,9 +9,14 @@ import { navLinks, business } from "@/lib/data/business"
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
+  const isMenuPage = pathname === "/menu"
 
   return (
-    <header className="sticky top-0 z-40 bg-cream/85 backdrop-blur-md border-b border-ink/10">
+    <header
+      className={`sticky top-0 z-40 border-b border-ink/10 ${
+        isMenuPage ? "bg-cream" : "bg-cream/85 backdrop-blur-md"
+      }`}
+    >
       <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="Soul Tye home">
           <Logo />
