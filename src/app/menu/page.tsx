@@ -2,6 +2,7 @@ import Link from "next/link"
 import { menu, menuNote } from "@/lib/data/menu"
 import type { MenuItem } from "@/lib/data/menu"
 import { business } from "@/lib/data/business"
+import { testimonials } from "@/lib/data/testimonials"
 
 export const metadata = {
   title: "Menu — Soul Tye",
@@ -36,6 +37,9 @@ const menuTabs = [
   { label: "Sweets", href: "#sweets" },
   { label: "Drinks", href: "#drinks" },
 ]
+
+const customerTexts = testimonials.filter((item) => item.type === "text").slice(0, 2)
+const pressQuote = testimonials.find((item) => item.type === "press")
 
 export default function MenuPage() {
   return (
@@ -160,6 +164,57 @@ export default function MenuPage() {
               title="Wash it down."
               items={drinks}
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-marigold text-ink py-20 md:py-24 border-y-2 border-ink">
+        <div className="mx-auto max-w-7xl px-6 grid gap-8 lg:grid-cols-12 items-start">
+          <div className="lg:col-span-4">
+            <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-3">
+              Folks been talking
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl font-black leading-tight">
+              Texts, press, and live plate drops.
+            </h2>
+            <a
+              href={business.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex rounded-full border-2 border-ink bg-ink px-5 py-3 text-sm font-bold text-cream transition hover:bg-tomato"
+            >
+              Follow {business.instagramHandle}
+            </a>
+          </div>
+
+          <div className="lg:col-span-8 grid gap-4 md:grid-cols-3">
+            {customerTexts.map((item) => (
+              <blockquote
+                key={item.quote}
+                className="rounded-3xl border-2 border-ink bg-cream p-6 sticker"
+              >
+                <p className="font-display text-2xl font-black leading-tight">
+                  "{item.quote}"
+                </p>
+                <div className="mt-4 text-sm text-charcoal/70">
+                  {item.who} · {item.context}
+                </div>
+              </blockquote>
+            ))}
+
+            {pressQuote && (
+              <blockquote className="rounded-3xl border-2 border-ink bg-forest p-6 text-cream sticker">
+                <div className="text-xs uppercase tracking-[0.18em] text-marigold font-semibold mb-3">
+                  {business.press.outlet}
+                </div>
+                <p className="font-display text-xl font-black leading-tight">
+                  "{business.press.title}."
+                </p>
+                <div className="mt-4 text-sm text-cream/70">
+                  {business.press.date}
+                </div>
+              </blockquote>
+            )}
           </div>
         </div>
       </section>
