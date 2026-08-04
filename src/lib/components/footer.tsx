@@ -41,11 +41,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-14 grid gap-10 md:grid-cols-4">
-        <div className="md:col-span-2 space-y-4">
-          <div className="bg-cream rounded-2xl p-4 inline-block">
-            <Logo />
-          </div>
+      <div className="mx-auto max-w-7xl px-6 py-20 grid gap-12 md:grid-cols-12">
+        <div className="md:col-span-5 space-y-5">
+          <Logo tone="light" className="items-start" />
           <p className="font-display text-2xl leading-snug max-w-md">
             {business.hookLine}
           </p>
@@ -53,9 +51,17 @@ export default function Footer() {
             A neighborhood food stand on the corner of Bridge & York. Hand-cooked
             by Tye. We cater most food events.
           </p>
+          <div className="flex flex-wrap gap-3 pt-3">
+            <a href={business.phoneHref} className="btn-primary">
+              Call {business.phone}
+            </a>
+            <Link href="/catering" className="btn-ghost btn-ghost-light">
+              Book catering
+            </Link>
+          </div>
         </div>
 
-        <div>
+        <div className="md:col-span-2">
           <div className="text-xs uppercase tracking-[0.2em] text-marigold mb-3">
             Explore
           </div>
@@ -70,7 +76,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="md:col-span-2">
           <div className="text-xs uppercase tracking-[0.2em] text-marigold mb-3">
             Reach Tye
           </div>
@@ -101,6 +107,32 @@ export default function Footer() {
               {business.location.neighborhood}
             </li>
           </ul>
+        </div>
+
+        <div className="md:col-span-3 space-y-6">
+          <div>
+            <div className="text-xs uppercase tracking-[0.2em] text-marigold mb-3">
+              Pull up
+            </div>
+            <div className="font-display text-xl font-bold">
+              {business.hours.days}
+            </div>
+            <div className="text-cream/75">{business.hours.time}</div>
+            <div className="mt-3 text-sm text-cream/65">
+              Delivery {business.delivery.fee}. Call ahead for made-to-order
+              plates and weekly specials.
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-cream/15 p-5">
+            <div className="text-xs uppercase tracking-[0.2em] text-marigold mb-2">
+              Crowd order?
+            </div>
+            <p className="text-sm leading-relaxed text-cream/75">
+              Foil pans, family trays, office lunches, birthdays, showers, and
+              neighborhood events cooked with the same corner-stand flavor.
+            </p>
+          </div>
         </div>
       </div>
 

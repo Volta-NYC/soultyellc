@@ -3,9 +3,13 @@ import Image from "next/image"
 type Props = {
   className?: string
   variant?: "full" | "mark"
+  tone?: "dark" | "light"
 }
 
-export default function Logo({ className = "", variant = "full" }: Props) {
+export default function Logo({ className = "", variant = "full", tone = "dark" }: Props) {
+  const titleColor = tone === "light" ? "text-cream" : "text-ink"
+  const metaColor = tone === "light" ? "text-marigold" : "text-tomato"
+
   if (variant === "mark") {
     return (
       <Image
@@ -29,10 +33,10 @@ export default function Logo({ className = "", variant = "full" }: Props) {
         priority
       />
       <div className="leading-none">
-        <div className="font-display text-xl font-black tracking-tight text-ink">
+        <div className={`font-display text-xl font-black tracking-tight ${titleColor}`}>
           Soul Tye
         </div>
-        <div className="text-[10px] uppercase tracking-[0.18em] text-tomato font-semibold">
+        <div className={`text-[10px] uppercase tracking-[0.18em] font-semibold ${metaColor}`}>
           Brooklyn · Est. 2021
         </div>
       </div>
