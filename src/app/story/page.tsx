@@ -13,6 +13,13 @@ const quotes = [
   "I want to continue being my own boss. That's my goal. And I want to continue creating a menu that is unique from anybody else's.",
 ]
 
+const teamNotes = [
+  "Founder, cook, menu builder, and the person making sure every plate leaves right.",
+  "Neighborhood assistant helping keep the corner moving when the line starts forming.",
+  "Part of the stand crew, backing the setup, service, and daily rush.",
+  "Learning the rhythm of the business from the corner up.",
+]
+
 export default function StoryPage() {
   return (
     <>
@@ -117,27 +124,34 @@ export default function StoryPage() {
               Hired from the block.
             </h2>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2">
             {business.team.map((m, i) => (
               <div
                 key={m.name}
-                className={`rounded-3xl border-2 border-ink p-6 sticker ${
-                  ["bg-tomato text-cream", "bg-marigold text-ink", "bg-forest text-cream", "bg-peach text-ink"][i % 4]
-                }`}
+                className="group rounded-3xl border-2 border-ink bg-cream p-6 md:p-8 sticker overflow-hidden"
               >
-                <div className="h-24 w-24 rounded-full bg-cream/90 border-2 border-ink flex items-center justify-center font-display font-black text-3xl text-ink">
-                  {m.name
-                    .replace(/[^A-Za-z ]/g, "")
-                    .split(" ")
-                    .map((w) => w[0])
-                    .filter(Boolean)
-                    .slice(0, 2)
-                    .join("")}
+                <div className="flex items-start justify-between gap-6">
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-tomato font-semibold">
+                      {m.role}
+                    </div>
+                    <div className="font-display font-black text-3xl md:text-4xl mt-2 leading-tight">
+                      {m.name}
+                    </div>
+                  </div>
+                  <div className="h-14 w-14 rounded-full border-2 border-ink bg-marigold group-even:bg-tomato" />
                 </div>
-                <div className="font-display font-bold text-2xl mt-4 leading-tight">
-                  {m.name}
+                <p className="mt-6 text-charcoal/80 leading-relaxed">
+                  {teamNotes[i]}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-charcoal/65">
+                  <span className="rounded-full bg-butter px-3 py-1">
+                    Bridge & York
+                  </span>
+                  <span className="rounded-full bg-butter px-3 py-1">
+                    Block built
+                  </span>
                 </div>
-                <div className="text-sm opacity-80 mt-1">{m.role}</div>
               </div>
             ))}
           </div>
