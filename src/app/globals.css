@@ -102,6 +102,15 @@ body {
   color: #FBF1DC;
 }
 
+.btn-ghost-light {
+  border-color: #FBF1DC;
+  color: #FBF1DC;
+}
+.btn-ghost-light:hover {
+  background: #FBF1DC;
+  color: #1A1410;
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;

@@ -391,7 +391,7 @@ function CateringCta() {
             >
               Plan an event →
             </Link>
-            <a href={business.phoneHref} className="btn-ghost border-cream text-cream hover:bg-cream hover:text-ink">
+            <a href={business.phoneHref} className="btn-ghost btn-ghost-light">
               Call {business.phone}
             </a>
           </div>

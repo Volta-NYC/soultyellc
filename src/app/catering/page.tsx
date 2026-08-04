@@ -83,7 +83,7 @@ export default function CateringPage() {
               </a>
               <a
                 href={`mailto:${business.email}?subject=Catering inquiry`}
-                className="btn-ghost border-cream text-cream hover:bg-cream hover:text-ink"
+                className="btn-ghost btn-ghost-light"
               >
                 Email a request
               </a>

@@ -148,7 +148,7 @@ export default function MenuPage() {
             <a href={business.phoneHref} className="btn-primary">
               Call {business.phone}
             </a>
-            <Link href="/catering" className="btn-ghost border-cream text-cream hover:bg-cream hover:text-ink">
+            <Link href="/catering" className="btn-ghost btn-ghost-light">
               Catering menu
             </Link>
           </div>
