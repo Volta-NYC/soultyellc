@@ -29,6 +29,14 @@ const spotlightMains = spotlightNames
 
 const rotatingMains = mains.filter((item) => !spotlightNames.includes(item.name))
 
+const menuTabs = [
+  { label: "Dinners", href: "#dinners" },
+  { label: "Mains", href: "#mains" },
+  { label: "Sides", href: "#sides" },
+  { label: "Sweets", href: "#sweets" },
+  { label: "Drinks", href: "#drinks" },
+]
+
 export default function MenuPage() {
   return (
     <>
@@ -71,9 +79,23 @@ export default function MenuPage() {
         </div>
       </section>
 
+      <nav className="sticky top-[73px] z-30 bg-cream/95 border-b border-ink/10 no-blur-reveal">
+        <div className="mx-auto max-w-7xl px-6 py-3 flex gap-2 overflow-x-auto">
+          {menuTabs.map((tab) => (
+            <a
+              key={tab.href}
+              href={tab.href}
+              className="shrink-0 rounded-full border border-ink/15 bg-paper px-4 py-2 text-sm font-bold text-ink transition hover:border-tomato hover:text-tomato"
+            >
+              {tab.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
       <section className="bg-paper py-20 no-blur-reveal">
         <div className="mx-auto max-w-7xl px-6 space-y-14">
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div id="dinners" className="scroll-mt-36 grid gap-6 lg:grid-cols-3">
             <div className="lg:col-span-1">
               <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-3">
                 1 · Most asked-for
@@ -94,7 +116,10 @@ export default function MenuPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border-2 border-ink bg-cream p-6 md:p-8 sticker">
+          <div
+            id="mains"
+            className="scroll-mt-36 rounded-3xl border-2 border-ink bg-cream p-6 md:p-8 sticker"
+          >
             <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
               <div>
                 <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-2">
@@ -117,17 +142,20 @@ export default function MenuPage() {
 
           <div className="grid gap-6 lg:grid-cols-3">
             <MenuPanel
+              id="sides"
               eyebrow="3 · Sides"
               title="Pick two."
               subtitle="Every side is $6."
               items={sides}
             />
             <MenuPanel
+              id="sweets"
               eyebrow="4 · Cornbread & sweets"
               title="Finish sweet."
               items={desserts}
             />
             <MenuPanel
+              id="drinks"
               eyebrow="5 · Drinks"
               title="Wash it down."
               items={drinks}
@@ -207,18 +235,23 @@ function CompactItem({
 }
 
 function MenuPanel({
+  id,
   eyebrow,
   title,
   subtitle,
   items,
 }: {
+  id: string
   eyebrow: string
   title: string
   subtitle?: string
   items: { name: string; price: string; note?: string }[]
 }) {
   return (
-    <section className="rounded-3xl border-2 border-ink bg-cream p-6 sticker no-blur-reveal">
+    <section
+      id={id}
+      className="scroll-mt-36 rounded-3xl border-2 border-ink bg-cream p-6 sticker no-blur-reveal"
+    >
       <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-2">
         {eyebrow}
       </div>
