@@ -42,10 +42,10 @@ function Hero() {
         <div className="absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-tomato/20 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-14 pb-20 md:pt-20 md:pb-32 grid lg:grid-cols-12 gap-10 items-center">
-        <div className="lg:col-span-7 space-y-7">
+      <div className="relative mx-auto max-w-[92rem] px-6 pt-14 pb-20 md:pt-20 md:pb-32 grid lg:grid-cols-12 gap-10 xl:gap-16 items-center">
+        <div className="lg:col-span-6 space-y-7">
           <OpenBadge />
-          <h1 className="font-display font-black tracking-[-0.02em] text-[clamp(3rem,9vw,7.5rem)] leading-[0.92] text-ink">
+          <h1 className="font-display font-black tracking-tight text-[clamp(3rem,9vw,7.5rem)] leading-[0.92] text-ink">
             Soul food,
             <br />
             <span className="text-tomato">hand-cooked</span>
@@ -77,10 +77,10 @@ function Hero() {
           </div>
         </div>
 
-        <div className="lg:col-span-5 relative">
-          <div className="relative aspect-square max-w-md mx-auto">
+        <div className="lg:col-span-6 relative">
+          <div className="relative aspect-square max-w-[42rem] mx-auto">
             <div className="absolute inset-0 rounded-full bg-marigold/40 blur-2xl scale-90" />
-            <div className="relative grid grid-cols-2 gap-4 p-4">
+            <div className="relative grid grid-cols-2 gap-5 md:gap-6 p-2 md:p-4">
               {heroPlates.map((p, i) => (
                 <div
                   key={p.src}
@@ -94,7 +94,7 @@ function Hero() {
                     src={p.src}
                     alt={p.alt}
                     fill
-                    sizes="(min-width: 1024px) 220px, 45vw"
+                    sizes="(min-width: 1280px) 320px, (min-width: 1024px) 28vw, 45vw"
                     className="object-cover"
                     priority={i < 2}
                   />
@@ -479,4 +479,3 @@ function VisitBlock() {
     </section>
   )
 }
-

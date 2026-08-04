@@ -55,8 +55,8 @@ export default function CateringPage() {
           <div className="absolute -top-32 -left-20 h-96 w-96 rounded-full border-[3px] border-cream" />
           <div className="absolute -bottom-32 -right-10 h-[28rem] w-[28rem] rounded-full border-[3px] border-cream" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-6 py-24 grid gap-10 md:grid-cols-12 items-center">
-          <div className="md:col-span-7">
+        <div className="relative mx-auto max-w-[92rem] px-6 py-24 grid gap-10 xl:gap-16 md:grid-cols-12 items-center">
+          <div className="md:col-span-6">
             <div className="text-xs uppercase tracking-[0.22em] text-marigold font-semibold mb-3">
               Catering by Soul Tye
             </div>
@@ -89,10 +89,10 @@ export default function CateringPage() {
               </a>
             </div>
           </div>
-          <div className="md:col-span-5">
+          <div className="md:col-span-6">
             <div className="relative">
-              <div className="bg-cream rounded-3xl border-2 border-ink p-6 sticker -rotate-2">
-                <div className="grid grid-cols-2 gap-3">
+              <div className="bg-cream rounded-3xl border-2 border-ink p-5 md:p-7 sticker -rotate-2">
+                <div className="grid grid-cols-2 gap-4 md:gap-5">
                   {cateringFavorites.map((f) => (
                     <div key={f.title} className="text-center">
                       <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-ink">
@@ -100,7 +100,7 @@ export default function CateringPage() {
                           src={f.image}
                           alt={f.title}
                           fill
-                          sizes="(min-width: 768px) 200px, 40vw"
+                          sizes="(min-width: 1280px) 300px, (min-width: 768px) 24vw, 40vw"
                           className="object-cover"
                         />
                       </div>
