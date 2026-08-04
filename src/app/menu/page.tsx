@@ -56,7 +56,7 @@ export default function MenuPage() {
             <div key={cat.id} className="grid gap-10 md:grid-cols-12">
               <div className="md:col-span-4 md:sticky md:top-24 md:self-start">
                 <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-3">
-                  0{idx + 1} · Section
+                  {idx + 1} · Section
                 </div>
                 <h2 className="font-display text-5xl md:text-6xl font-black leading-[0.95] tracking-tight">
                   {cat.title}

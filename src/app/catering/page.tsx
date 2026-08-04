@@ -26,22 +26,22 @@ const cateringFavorites = [
 
 const process = [
   {
-    n: "01",
+    n: "1",
     title: "Tell us about it",
     body: "Call or text Tye with the date, head-count, and any dishes you have in mind. We'll talk through what works.",
   },
   {
-    n: "02",
+    n: "2",
     title: "Custom menu & quote",
     body: "We send back a menu shaped around your event and a clear total. No mystery line-items.",
   },
   {
-    n: "03",
+    n: "3",
     title: "We cook from scratch",
     body: "Everything is hand-prepared by Tye the night before and the morning of. Foil pans, branded stickers, the works.",
   },
   {
-    n: "04",
+    n: "4",
     title: "Delivery & setup",
     body: "We bring it to you and set up so it's ready to serve. You handle the photos.",
   },
@@ -146,7 +146,7 @@ export default function CateringPage() {
                 className="bg-cream border-2 border-ink rounded-3xl p-6 sticker hover:-translate-y-1 transition"
               >
                 <div className="font-display text-sm font-bold text-tomato tracking-[0.18em]">
-                  {String(i + 1).padStart(2, "0")}
+                  {i + 1}
                 </div>
                 <div className="font-display text-2xl font-black mt-3">
                   {e.title}
