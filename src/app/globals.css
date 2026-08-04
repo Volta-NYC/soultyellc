@@ -111,59 +111,78 @@ body {
   color: #1A1410;
 }
 
-@keyframes fade-in-up {
+@keyframes scroll-reveal {
   from {
     opacity: 0;
-    transform: translate3d(0, 14px, 0) scale(0.985);
-    filter: blur(6px);
+    transform:
+      translate3d(var(--reveal-x, 0), var(--reveal-y, 24px), 0)
+      scale(var(--reveal-scale, 1));
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
-    filter: blur(0);
   }
 }
 
+.reveal-motion {
+  --reveal-x: 0;
+  --reveal-y: 24px;
+  --reveal-scale: 1;
+  --reveal-delay: 0ms;
+}
+.reveal-text {
+  --reveal-y: 18px;
+}
+.reveal-from-left {
+  --reveal-x: -42px;
+  --reveal-y: 12px;
+}
+.reveal-from-right {
+  --reveal-x: 42px;
+  --reveal-y: 12px;
+}
+.reveal-from-bottom {
+  --reveal-y: 42px;
+}
+.reveal-pop {
+  --reveal-y: 28px;
+  --reveal-scale: 0.94;
+}
+
 @supports (animation-timeline: view()) {
-  section:not(.no-blur-reveal),
-  article:not(.no-blur-reveal),
-  .reveal {
-    animation: fade-in-up cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  .reveal-motion {
+    animation: scroll-reveal cubic-bezier(0.22, 0.61, 0.36, 1) both;
     animation-timeline: view();
-    animation-range: entry 0% cover 28%;
+    animation-range: entry 0% cover 34%;
   }
 }
 
 @supports not (animation-timeline: view()) {
-  .reveal-pending {
+  .reveal-pending.reveal-motion {
     opacity: 0;
-    transform: translate3d(0, 14px, 0) scale(0.985);
-    filter: blur(6px);
+    transform:
+      translate3d(var(--reveal-x, 0), var(--reveal-y, 24px), 0)
+      scale(var(--reveal-scale, 1));
   }
-  .reveal-pending,
-  .is-visible {
+  .reveal-motion {
     transition:
       opacity 900ms cubic-bezier(0.22, 0.61, 0.36, 1),
-      transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1),
-      filter 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
-    will-change: opacity, transform, filter;
+      transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition-delay: var(--reveal-delay);
+    will-change: opacity, transform;
   }
-  .is-visible {
+  .is-visible.reveal-motion {
     opacity: 1;
     transform: none;
-    filter: blur(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  section,
-  article,
-  .reveal,
+  .reveal-motion,
   .reveal-pending {
     animation: none;
     opacity: 1;
     transform: none;
-    filter: none;
     transition: none;
   }
 }
