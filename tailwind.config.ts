@@ -19,7 +19,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
         hand: ["var(--font-hand)", "cursive"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-rounded", "Trebuchet MS", "sans-serif"],
       },
       animation: {
         marquee: "marquee 40s linear infinite",

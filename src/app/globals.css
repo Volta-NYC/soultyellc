@@ -19,7 +19,7 @@ html {
 body {
   background: #FBF1DC;
   color: #1A1410;
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), ui-rounded, "Trebuchet MS", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

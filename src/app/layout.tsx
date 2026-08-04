@@ -1,5 +1,5 @@
 import "./globals.css"
-import { Fraunces, Caveat, Inter } from "next/font/google"
+import { Bricolage_Grotesque, Fraunces, Caveat } from "next/font/google"
 import Navbar from "@/lib/components/navbar"
 import Footer from "@/lib/components/footer"
 import ScrollReveal from "@/lib/components/scroll-reveal"
@@ -18,9 +18,10 @@ const hand = Caveat({
   display: "swap",
 })
 
-const sans = Inter({
+const sans = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 })
 
