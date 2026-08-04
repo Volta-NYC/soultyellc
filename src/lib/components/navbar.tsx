@@ -30,7 +30,9 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`relative px-4 py-2 text-sm font-medium tracking-wide rounded-full transition ${
-                  active ? "bg-ink text-cream" : "text-ink hover:bg-ink/5"
+                  active
+                    ? "text-tomato bg-tomato/10"
+                    : "text-ink hover:bg-ink/5"
                 }`}
               >
                 {link.label}
@@ -64,7 +66,9 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={`px-4 py-3 rounded-2xl text-base font-medium ${
-                  pathname === link.href ? "bg-ink text-cream" : "text-ink hover:bg-ink/5"
+                  pathname === link.href
+                    ? "bg-tomato/10 text-tomato"
+                    : "text-ink hover:bg-ink/5"
                 }`}
               >
                 {link.label}
