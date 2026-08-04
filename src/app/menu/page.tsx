@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { menu, menuNote } from "@/lib/data/menu"
+import type { MenuItem } from "@/lib/data/menu"
 import { business } from "@/lib/data/business"
 
 export const metadata = {
@@ -7,6 +8,26 @@ export const metadata = {
   description:
     "A rotating weekly menu of Brooklyn soul food: lamb chops, salmon, wings, famous mac, cornbread, and more.",
 }
+
+const mains = menu.find((cat) => cat.id === "mains")?.items ?? []
+const sides = menu.find((cat) => cat.id === "sides")?.items ?? []
+const desserts = menu.find((cat) => cat.id === "breads-desserts")?.items ?? []
+const drinks = menu.find((cat) => cat.id === "drinks")?.items ?? []
+
+const spotlightNames = [
+  "Lamb Chops w/ Garlic Butter",
+  "Oxtail Plates",
+  "Salmon w/ Garlic Butter",
+  "Turkey Wings",
+  "3 PC Fried Whiting Meal",
+  "Baked Chicken",
+]
+
+const spotlightMains = spotlightNames
+  .map((name) => mains.find((item) => item.name === name))
+  .filter((item): item is MenuItem => Boolean(item))
+
+const rotatingMains = mains.filter((item) => !spotlightNames.includes(item.name))
 
 export default function MenuPage() {
   return (
@@ -51,58 +72,67 @@ export default function MenuPage() {
       </section>
 
       <section className="bg-paper py-20 no-blur-reveal">
-        <div className="mx-auto max-w-7xl px-6 space-y-20">
-          {menu.map((cat, idx) => (
-            <div key={cat.id} className="grid gap-10 md:grid-cols-12">
-              <div className="md:col-span-4 md:sticky md:top-24 md:self-start">
-                <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-3">
-                  {idx + 1} · Section
-                </div>
-                <h2 className="font-display text-5xl md:text-6xl font-black leading-[0.95] tracking-tight">
-                  {cat.title}
-                </h2>
-                {cat.subtitle && (
-                  <p className="mt-4 text-charcoal/75 max-w-sm">{cat.subtitle}</p>
-                )}
+        <div className="mx-auto max-w-7xl px-6 space-y-14">
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="lg:col-span-1">
+              <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-3">
+                1 · Most asked-for
               </div>
+              <h2 className="font-display text-5xl md:text-6xl font-black leading-[0.95] tracking-tight">
+                Start with the dinners.
+              </h2>
+              <p className="mt-4 text-charcoal/75 max-w-sm">
+                Plates come with 2 sides and a drink. Some dishes are made to
+                order, so call ahead when you can.
+              </p>
+            </div>
 
-              <div className="md:col-span-8">
-                <ul className="divide-y divide-ink/10 bg-cream rounded-3xl border-2 border-ink overflow-hidden sticker">
-                  {cat.items.map((item) => (
-                    <li
-                      key={item.name}
-                      className={`flex items-baseline gap-4 px-6 py-5 hover:bg-butter/40 transition ${
-                        item.featured ? "bg-butter/30" : ""
-                      }`}
-                    >
-                      <div className="flex-1">
-                        <div className="font-display text-lg font-bold flex items-center gap-2">
-                          {item.featured && (
-                            <span
-                              className="text-tomato"
-                              aria-label="signature dish"
-                              title="Signature"
-                            >
-                              ★
-                            </span>
-                          )}
-                          {item.name}
-                        </div>
-                        {item.note && (
-                          <div className="text-xs uppercase tracking-wider text-tomato mt-0.5 font-semibold">
-                            {item.note}
-                          </div>
-                        )}
-                      </div>
-                      <div className="font-display font-black text-xl">
-                        {item.price}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+            <div className="lg:col-span-2 grid gap-4 sm:grid-cols-2">
+              {spotlightMains.map((item) => (
+                <MenuCard key={item.name} item={item} />
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-3xl border-2 border-ink bg-cream p-6 md:p-8 sticker">
+            <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
+              <div>
+                <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-2">
+                  2 · Also in rotation
+                </div>
+                <h3 className="font-display text-3xl md:text-4xl font-black leading-tight">
+                  More mains, quick scan.
+                </h3>
+              </div>
+              <div className="font-hand text-2xl text-charcoal/75">
+                menu changes weekly
               </div>
             </div>
-          ))}
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {rotatingMains.map((item) => (
+                <CompactItem key={item.name} item={item} />
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            <MenuPanel
+              eyebrow="3 · Sides"
+              title="Pick two."
+              subtitle="Every side is $6."
+              items={sides}
+            />
+            <MenuPanel
+              eyebrow="4 · Cornbread & sweets"
+              title="Finish sweet."
+              items={desserts}
+            />
+            <MenuPanel
+              eyebrow="5 · Drinks"
+              title="Wash it down."
+              items={drinks}
+            />
+          </div>
         </div>
       </section>
 
@@ -125,5 +155,80 @@ export default function MenuPage() {
         </div>
       </section>
     </>
+  )
+}
+
+function MenuCard({
+  item,
+}: {
+  item: { name: string; price: string; note?: string }
+}) {
+  return (
+    <article className="bg-cream rounded-3xl border-2 border-ink p-6 sticker">
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="font-display text-2xl md:text-3xl font-black leading-tight">
+          {item.name}
+        </h3>
+        <div className="rounded-full bg-tomato px-4 py-2 font-display text-xl font-black text-cream">
+          {item.price}
+        </div>
+      </div>
+      {item.note && (
+        <div className="mt-4 inline-flex rounded-full bg-butter px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-tomato">
+          {item.note}
+        </div>
+      )}
+    </article>
+  )
+}
+
+function CompactItem({
+  item,
+}: {
+  item: { name: string; price: string; note?: string }
+}) {
+  return (
+    <div className="rounded-2xl border border-ink/15 bg-paper px-4 py-3">
+      <div className="flex items-baseline gap-3">
+        <div className="font-display text-lg font-bold leading-tight">
+          {item.name}
+        </div>
+        <div className="ml-auto font-display text-lg font-black">
+          {item.price}
+        </div>
+      </div>
+      {item.note && (
+        <div className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-tomato">
+          {item.note}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function MenuPanel({
+  eyebrow,
+  title,
+  subtitle,
+  items,
+}: {
+  eyebrow: string
+  title: string
+  subtitle?: string
+  items: { name: string; price: string; note?: string }[]
+}) {
+  return (
+    <section className="rounded-3xl border-2 border-ink bg-cream p-6 sticker no-blur-reveal">
+      <div className="text-xs uppercase tracking-[0.22em] text-tomato font-semibold mb-2">
+        {eyebrow}
+      </div>
+      <h3 className="font-display text-3xl font-black leading-tight">{title}</h3>
+      {subtitle && <p className="mt-1 text-sm text-charcoal/70">{subtitle}</p>}
+      <div className="mt-5 space-y-3">
+        {items.map((item) => (
+          <CompactItem key={item.name} item={item} />
+        ))}
+      </div>
+    </section>
   )
 }
