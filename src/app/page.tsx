@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import OpenBadge from "@/lib/components/open-badge"
 import { business } from "@/lib/data/business"
 import { signatureDishes, menu } from "@/lib/data/menu"
 import { testimonials } from "@/lib/data/testimonials"
@@ -44,7 +43,6 @@ function Hero() {
 
       <div className="relative mx-auto max-w-[92rem] px-6 pt-14 pb-20 md:pt-20 md:pb-32 grid lg:grid-cols-12 gap-10 xl:gap-16 items-center">
         <div className="lg:col-span-6 space-y-7">
-          <OpenBadge />
           <h1 className="font-display font-black tracking-tight text-[clamp(3rem,9vw,7.5rem)] leading-[0.92] text-ink">
             Soul food,
             <br />
@@ -465,7 +463,6 @@ function VisitBlock() {
                   {business.hours.time}
                 </div>
               </div>
-              <OpenBadge />
             </div>
             <iframe
               title="Map of Bridge St & York St, Brooklyn"

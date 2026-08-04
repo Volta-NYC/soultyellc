@@ -1,4 +1,3 @@
-import OpenBadge from "@/lib/components/open-badge"
 import { business } from "@/lib/data/business"
 
 export const metadata = {
@@ -53,7 +52,6 @@ export default function ContactPage() {
             </p>
           </div>
           <div className="md:col-span-4 md:text-right">
-            <OpenBadge className="mb-3" />
             <div className="font-display text-xl font-bold">
               {business.hours.days}
             </div>
