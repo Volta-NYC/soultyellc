@@ -142,12 +142,12 @@ export default function Footer() {
             © {new Date().getFullYear()} {business.legalName}. All rights reserved.
           </div>
           <Link
-            href="https://nyc.voltanpo.org"
+            href="https://novus.nyc"
             target="_blank"
             rel="noreferrer"
             className="hover:text-marigold"
           >
-            Website made by @VoltaNYC
+            Made by <span className="text-marigold">Novus</span>
           </Link>
         </div>
       </div>
