@@ -142,12 +142,12 @@ export default function Footer() {
             © {new Date().getFullYear()} {business.legalName}. All rights reserved.
           </div>
           <Link
-            href="https://novus.nyc"
+            href="https://www.novusnyc.org/"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-marigold"
           >
-            Made by <span className="text-marigold">Novus</span>
+            Made by{" "}
+            <span className="text-[#F6B78D] hover:text-[#F6B78D]">Novus</span>
           </Link>
         </div>
       </div>
